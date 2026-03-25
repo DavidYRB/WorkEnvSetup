@@ -1,0 +1,6 @@
+{
+  "python.linting.enabled": true,
+  "clangd.path": "clangd",
+  "json.format.enable": true,
+  "yaml.format.enable": true
+}

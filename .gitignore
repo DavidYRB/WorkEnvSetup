@@ -1,0 +1,12 @@
+# Vim
+*.swp
+*.swo
+*~
+
+# Zsh
+.zcompdump*
+.zsh_history
+.zsh_sessions/
+
+# macOS
+.DS_Store

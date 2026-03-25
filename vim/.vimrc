@@ -1,11 +1,12 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-plugin 'vim-airline/vim-airline'
-plugin 'arcticicestudio/nord-vim'
-plugin 'valloric/youcompleteme'
-plugin 'sheerun/vim-polyglot'
-plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-plugin 'junegunn/fzf.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+Plugin 'preservim/nerdtree'
 call vundle#end()
 
 let mapleader=' '
@@ -47,13 +48,16 @@ nnoremap <c-s>v <c-w><c-v>
 "fzf shortcuts"
 nnoremap <space>f :files<cr>
 
-"youcompleteme shortcuts"
-nnoremap <space>j :vertical ycmcompleter gotodefinition<cr>
+"nerdtree shortcuts"
+nnoremap <leader>n :NERDTreeToggle<cr>
+
+"coc.nvim shortcuts"
+nmap <silent> <space>j <Plug>(coc-definition)
 
 "buffer shortcuts
 nnoremap ls :ls<cr>
 nnoremap bn :bnext<cr>
-nnoremap bn :bnext<cr>
+nnoremap bp :bprev<cr>
 
 "resize vim windows"
 nnoremap <silent> <s-k> <c-w>+
@@ -65,6 +69,7 @@ nnoremap <silent> <s-=> <c-w>=
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
 colorscheme nord
+let g:airline_theme='nord'
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'normal'],
@@ -81,5 +86,4 @@ let g:fzf_colors =
 \ 'spinner': ['fg', 'label'],
 \ 'header':  ['fg', 'comment'] }
 
-let g:ycm_goto_buffer_command = 'split'
 
