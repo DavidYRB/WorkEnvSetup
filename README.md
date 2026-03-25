@@ -148,6 +148,24 @@ tmux new -s personal      # Create another session
 - `Shift+H/J/K/L` — resize splits
 - `Shift+=` — equalize split sizes
 
+## Testing
+
+Run the install/uninstall scripts in a clean Ubuntu Docker container to verify everything works on a fresh machine:
+
+```sh
+docker build -f Dockerfile.test -t workenv-test .
+docker run --rm -v "$(pwd):/home/testuser/WorkEnvSetup" workenv-test bash /home/testuser/WorkEnvSetup/test.sh
+```
+
+This runs 30 automated checks across 5 phases:
+1. **Install** — runs `install.sh` in a clean Ubuntu 22.04 container
+2. **Verify** — checks all packages, plugins, source lines, and symlinks
+3. **Idempotency** — runs `install.sh` again, verifies no duplicate source lines
+4. **Uninstall** — runs `uninstall.sh`
+5. **Verify cleanup** — confirms all source lines, plugins, and plugin managers are removed
+
+Requires [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+
 ## Uninstall
 
 ```sh
